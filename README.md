@@ -17,5 +17,11 @@ WEBHOOK_URI=https://10d1-2401-4900-1c7a-9c17-19c3-f88b-80cf-b4ba.ngrok-free.app/
 
 3. Run command `docker compose up`, relax for few minutes. This will make ready containers and install the require dependecies for the project
 
+4. Open home page by navigating to ngrok mapped domain or `http://localhost:3000`
 
+5. Enter your outlook email and click submit to get the code and then redirection happend and get acccess token.
+
+6. Once receieved the access token it will save these details under user and register subscription to receieve changes on email.
+
+7. Once the above step complete, the user will be redirected to `/data` page and the sync process will be start, after 10 sec, it will automatic display 10 message.
 
