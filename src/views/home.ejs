@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Center the form */
+    .centered-form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="row centered-form">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title text-center">Login</h3>
+          <form id="account-form">
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" class="form-control" id="userEmail" name="userEmail" placeholder="Enter email">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    document.getElementById('account-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const userEmail = e.target.userEmail.value;
+        if(!userEmail){
+            alert('Please enter Email!');
+            return;
+        }
+
+        const response = await fetch('/api/account', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email : userEmail })
+        });
+        const data = await response.json();
+        window.location.href = data.url;
+    });
+</script>
+
+</body>
+</html>
+
